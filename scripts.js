@@ -16,9 +16,9 @@ class MainContent extends HTMLElement {
             this.style.opacity = 0;
 
             // load new page and update url
+            window.history.pushState({}, '', newValue);
             setTimeout(() => {
                 this.loadPage(`${newValue}_page.html`);
-                window.history.pushState({}, '', newValue);
                 // fade in
                 this.style.opacity = 1
             }, 400);
