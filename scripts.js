@@ -65,9 +65,12 @@ class NavBar extends HTMLElement {
     }
 
     loadPage(page) {
-        // set content
+        // reformat page name
+        var target = page || 'home';
+        target = target.charAt(0) === '/' ? target.substring(1) : target;
+
+        // get content         
         const mainContent = document.querySelector('main-content');
-        const target = page || 'home';
         mainContent.setAttribute('path', `${target}`);
 
         // set active link

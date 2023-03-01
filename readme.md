@@ -6,3 +6,5 @@
 - reorganize code
 - reorganize css
 - move content from old website
+
+## Bugs
