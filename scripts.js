@@ -1,28 +1,10 @@
-function changeURL(path) {
-    window.history.pushState({}, '', path);
-}
-
-// window.addEventListener('popstate', () => {
-//     const path = window.location.pathname;
-//     console.log(path)
-
-//     if (path === '/page1') {
-//         // Handle the "/page1" URL
-//     } else if (path === '/page2') {
-//         // Handle the "/page2" URL
-//     } else if (path === '/page3') {
-//         // Handle the "/page3" URL
-//     }
-// });
-
 // === Main Content ===
 class MainContent extends HTMLElement {
     constructor() {
         super()
     }
 
-    connectedCallback() {
-    }
+    connectedCallback() { }
 
     static get observedAttributes() {
         return ['path'];
@@ -57,8 +39,11 @@ class NavBar extends HTMLElement {
     }
 
     connectedCallback() {
+        // set first page
         const mainContent = document.querySelector('main-content');
-        mainContent.setAttribute('path', 'home');
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('page');
+        mainContent.setAttribute('path', target || 'home');
 
         // create pages
         const pages = ['home', 'about', 'contact'];
