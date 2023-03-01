@@ -14,12 +14,12 @@ class MainContent extends HTMLElement {
         if (name === 'path' && newValue !== oldValue) {
             // initial fade out
             this.style.opacity = 0;
-            
-            // fade in
+
+            // load new page and update url
             setTimeout(() => {
-                // load new page and update url
                 this.loadPage(`${newValue}_page.html`);
                 window.history.pushState({}, '', newValue);
+                // fade in
                 this.style.opacity = 1
             }, 400);
         }
@@ -47,22 +47,37 @@ class NavBar extends HTMLElement {
     }
 
     connectedCallback() {
-        // set first page
-        const mainContent = document.querySelector('main-content');
-        const params = new URLSearchParams(window.location.search);
-        const target = params.get('page');
-        mainContent.setAttribute('path', target || 'home');
-
         // create pages
         const pages = ['home', 'about', 'contact'];
         pages.forEach(page => {
             const link = document.createElement('a');
             link.innerHTML = page;
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                mainContent.setAttribute('path', `${page}`);
+            link.addEventListener('click', () => {
+                this.loadPage(page);
             });
             this.appendChild(link);
+        });
+
+        // set first page
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('page');
+        this.loadPage(target);
+    }
+
+    loadPage(page) {
+        // set content
+        const mainContent = document.querySelector('main-content');
+        const target = page || 'home';
+        mainContent.setAttribute('path', `${target}`);
+
+        // set active link
+        const links = this.querySelectorAll('a');
+        links.forEach(link => {
+            if (link.innerHTML === target) {
+                link.classList.add('selected');
+            } else {
+                link.classList.remove('selected');
+            }
         });
     }
 }
@@ -76,11 +91,9 @@ class PageContent extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log(`connected ${this.pageName}`)
     }
 
     disconnectedCallback() {
-        console.log(`disconnected ${this.pageName}`)
     }
 }
 window.customElements.define('page-content', PageContent);

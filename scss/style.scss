@@ -1,5 +1,6 @@
 $primary-color: #222;
 $secondary-color: #f7f7f7;
+$accent-color: orange;
 
 * {
     margin: 0;
@@ -43,7 +44,16 @@ nav-bar {
         padding: 0.5rem 1rem;
 
         &:hover {
-            background-color: $secondary-color;
+            color: $accent-color;
+        }
+    }
+
+    .selected {
+        background-color: $secondary-color;
+        color: $primary-color;
+        transition: 400ms ease-in-out;
+
+        &:hover {
             color: $primary-color;
         }
     }
