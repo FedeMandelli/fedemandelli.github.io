@@ -12,8 +12,16 @@ class MainContent extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'path' && newValue !== oldValue) {
-            this.loadPage(`${newValue}_page.html`);
-            window.history.pushState({}, '', newValue);
+            // initial fade out
+            this.style.opacity = 0;
+            
+            // fade in
+            setTimeout(() => {
+                // load new page and update url
+                this.loadPage(`${newValue}_page.html`);
+                window.history.pushState({}, '', newValue);
+                this.style.opacity = 1
+            }, 400);
         }
     }
 
