@@ -30,7 +30,7 @@ class MainContent extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'path' && newValue !== oldValue) {
-            this.loadPage(`${newValue}.html`);
+            this.loadPage(`${newValue}_page.html`);
             window.history.pushState({}, '', newValue);
         }
     }
@@ -58,7 +58,7 @@ class NavBar extends HTMLElement {
 
     connectedCallback() {
         const mainContent = document.querySelector('main-content');
-        mainContent.setAttribute('path', 'home.html');
+        mainContent.setAttribute('path', 'home');
 
         // create pages
         const pages = ['home', 'about', 'contact'];
