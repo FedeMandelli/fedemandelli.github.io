@@ -35,7 +35,7 @@ class NavBar extends HTMLElement {
 
         // get content and update url         
         this.main = document.querySelector('main');
-        // window.history.pushState({}, '', target); // === TO CHANGE IN PRODUCTION ===
+        window.history.pushState({}, '', target); // === TO CHANGE IN PRODUCTION ===
 
         // load new page with fade effect
         this.main .style.opacity = 0;
