@@ -5,6 +5,23 @@ nav-bar {
     list-style: none;
     display: flex;
     justify-content: right;
+    position: relative;
+
+    .nav-logo {
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        fill: $accent-color;
+        height: 2.2rem;
+        cursor: pointer;
+        transition: 300ms ease-in-out;
+        padding: .2rem;
+
+        &:hover {
+            fill: $secondary-color;
+            padding: .1rem;
+        }
+    }
 
     a {
         display: inline-block;
@@ -13,6 +30,9 @@ nav-bar {
         font-weight: 900;
         text-decoration: none;
         padding: 0.5rem 1rem;
+        transition-property: color, background-color;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
 
         &:hover {
             color: $accent-color;
@@ -22,7 +42,6 @@ nav-bar {
     .selected {
         background-color: $secondary-color;
         color: $primary-color;
-        transition: 400ms ease-in-out;
 
         &:hover {
             color: $primary-color;

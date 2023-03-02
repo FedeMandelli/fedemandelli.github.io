@@ -20,6 +20,12 @@ class NavBar extends HTMLElement {
         const params = new URLSearchParams(window.location.search);
         const target = params.get('page');
         this.loadPage(target);
+
+        // add event listener for logo
+        const logo = this.querySelector('svg')
+        logo.addEventListener('click', () => {
+            this.loadPage('home');
+        });
     }
 
     loadPage(page) {
@@ -49,7 +55,6 @@ class NavBar extends HTMLElement {
             }
         });
     }
-
 
     loadHtml(path) {
         const xhr = new XMLHttpRequest();
