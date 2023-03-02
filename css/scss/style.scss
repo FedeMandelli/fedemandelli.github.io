@@ -15,10 +15,6 @@ body {
     min-height: 100vh;
 }
 
-main-content {
-    flex: 1;
-}
-
 footer {
     background-color: $primary-color;
     color: $secondary-color;
@@ -59,11 +55,12 @@ nav-bar {
     }
 }
 
-main-content {
+main {
+    flex: 1;
     background-color: $secondary-color;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 4rem;
-    transition: opacity 400ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
 }

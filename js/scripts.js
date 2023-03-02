@@ -1,45 +1,3 @@
-// === Main Content ===
-class MainContent extends HTMLElement {
-    constructor() {
-        super()
-    }
-
-    connectedCallback() { }
-
-    static get observedAttributes() {
-        return ['path'];
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'path' && newValue !== oldValue) {
-            // initial fade out
-            this.style.opacity = 0;
-
-            // load new page and update url
-            window.history.pushState({}, '', newValue);
-            setTimeout(() => {
-                this.loadPage(`${newValue}_page.html`);
-                // fade in
-                this.style.opacity = 1
-            }, 400);
-        }
-    }
-
-    loadPage(path) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', path, true);
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                this.innerHTML = xhr.responseText;
-            } else if (xhr.status === 404) {
-                this.innerHTML = 'Page not found';
-            }
-        }
-        xhr.send();
-    }
-}
-window.customElements.define('main-content', MainContent);
-
 // === Navigation Bar ===
 class NavBar extends HTMLElement {
     constructor() {
@@ -69,9 +27,17 @@ class NavBar extends HTMLElement {
         var target = page || 'home';
         target = target.charAt(0) === '/' ? target.substring(1) : target;
 
-        // get content         
-        const mainContent = document.querySelector('main-content');
-        mainContent.setAttribute('path', `${target}`);
+        // get content and update url         
+        this.main = document.querySelector('main');
+        window.history.pushState({}, '', target);
+
+        // load new page with fade effect
+        this.main .style.opacity = 0;
+        setTimeout(() => {
+            this.loadHtml(`/html/${target}.html`);
+            // fade in
+            this.main.style.opacity = 1
+        }, 400);
 
         // set active link
         const links = this.querySelectorAll('a');
@@ -82,6 +48,20 @@ class NavBar extends HTMLElement {
                 link.classList.remove('selected');
             }
         });
+    }
+
+
+    loadHtml(path) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', path, true);
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                this.main .innerHTML = xhr.responseText;
+            } else if (xhr.status === 404) {
+                this.main .innerHTML = 'Page not found';
+            }
+        }
+        xhr.send();
     }
 }
 window.customElements.define('nav-bar', NavBar);
