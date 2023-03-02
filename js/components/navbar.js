@@ -6,7 +6,7 @@ class NavBar extends HTMLElement {
 
     connectedCallback() {
         // create pages
-        const pages = ['home', 'about', 'contact'];
+        const pages = ['home', 'baking', 'contact'];
         const linksContainer = this.querySelector('.links-container')
         pages.forEach(page => {
             const link = document.createElement('a');
@@ -44,12 +44,12 @@ class NavBar extends HTMLElement {
 
     loadPage(page) {
         // reformat page name
-        var target = page || 'about'; // === TO CHANGE IN PRODUCTION ===
+        var target = page || 'home'; // === TO CHANGE IN PRODUCTION ===
         target = target.charAt(0) === '/' ? target.substring(1) : target;
 
         // get content and update url         
         this.main = document.querySelector('main');
-        // window.history.pushState({}, '', target); // === TO CHANGE IN PRODUCTION ===
+        window.history.pushState({}, '', target); // === TO CHANGE IN PRODUCTION ===
 
         // load new page with fade effect
         this.main.style.opacity = 0;

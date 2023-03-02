@@ -1,26 +1,44 @@
 baker-calc {
     table {
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
         border-collapse: collapse;
         table-layout: fixed;
         width: 100%;
         max-width: 50ch;
+        margin: auto;
     }
 
     td,
     th {
-        width: 33%;
+        width: 25%;
         text-align: center;
         padding: 0.5rem;
         border: 1px solid $accent-color;
+
+        &:first-child {
+            width: 50%;
+        }
     }
 
     input {
-        font-size: 2rem;
+        font-size: 1.5rem;
         width: 100%;
         text-align: center;
         padding: 0.5rem;
         background-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+        table {
+            width: 90%;
+        }
+
+        input,
+        td,
+        th {
+            font-size: 1rem;
+            padding: 0.25rem;
+        }
     }
 }

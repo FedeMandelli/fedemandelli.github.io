@@ -1,0 +1,56 @@
+<page-content page-name="about">
+    <h1 class="m-1">Baking Calculator</h1>
+    <baker-calc>
+        <table>
+            <thead>
+                <tr>
+                    <th>ingredient</th>
+                    <th>%</th>
+                    <th>grams</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>total flour</td>
+                    <td><input type="number" value="100" disabled></td>
+                    <td><input id="total_flour_gr" type="number" min="0" value="1000"></td>
+                </tr>
+
+                <tr>
+                    <td>strong flour</td>
+                    <td><input id="strong_flour_pct" type="number" min="0" max="100" value="80"></td>
+                    <td><input id="strong_flour_gr" type="number" min="0" value="800"></td>
+                </tr>
+
+                <tr>
+                    <td>normal flour</td>
+                    <td><input id="normal_flour_pct" type="number" min="0" max="100" value="20"></td>
+                    <td><input id="normal_flour_gr" type="number" min="0" value="200"></td>
+                </tr>
+
+                <tr>
+                    <td>starter</td>
+                    <td><input id="starter_pct" type="number" min="0" max="100" value="20"></td>
+                    <td><input id="starter_gr" type="number" min="0" value="200"></td>
+                </tr>
+
+                <tr>
+                    <td>water</td>
+                    <td><input id="water_pct" type="number" min="0" max="100" value="65"></td>
+                    <td><input id="water_gr" type="number" min="0" value="650" disabled></td>
+                </tr>
+
+                <tr>
+                    <td>salt</td>
+                    <td><input id="salt_pct" type="number" min="0" max="100" value="2"></td>
+                    <td><input id="salt_gr" type="number" min="0" value="20" disabled></td>
+                </tr>
+
+                <tr>
+                    <td>oil</td>
+                    <td><input id="oil_pct" type="number" min="0" max="100" value="4"></td>
+                    <td><input id="oil_gr" type="number" min="0" value="40" disabled></td>
+                </tr>
+        </table>
+    </baker-calc>
+</page-content>
