@@ -7,13 +7,14 @@ class NavBar extends HTMLElement {
     connectedCallback() {
         // create pages
         const pages = ['home', 'about', 'contact'];
+        const linksContainer = this.querySelector('.links-container')
         pages.forEach(page => {
             const link = document.createElement('a');
             link.innerHTML = page;
             link.addEventListener('click', () => {
                 this.loadPage(page);
             });
-            this.appendChild(link);
+            linksContainer.appendChild(link);
         });
 
         // set first page
@@ -26,6 +27,19 @@ class NavBar extends HTMLElement {
         logo.addEventListener('click', () => {
             this.loadPage('home');
         });
+
+        // add event listener for menu button
+        const menu = this.querySelector('.menu-button');
+        menu.addEventListener('click', () => {
+            this.openCloseMenu();
+        });
+    }
+
+    openCloseMenu() {
+        const menu = this.querySelector('.menu-button');
+        const linksContainer = this.querySelector('.links-container');
+        menu.classList.toggle('menu-button-open');
+        linksContainer.classList.toggle('links-container-open');
     }
 
     loadPage(page) {
@@ -38,7 +52,7 @@ class NavBar extends HTMLElement {
         window.history.pushState({}, '', target); // === TO CHANGE IN PRODUCTION ===
 
         // load new page with fade effect
-        this.main .style.opacity = 0;
+        this.main.style.opacity = 0;
         setTimeout(() => {
             this.loadHtml(`/html/${target}.html`);
             // fade in
@@ -54,6 +68,9 @@ class NavBar extends HTMLElement {
                 link.classList.remove('selected');
             }
         });
+
+        // close menu
+        this.openCloseMenu();
     }
 
     loadHtml(path) {
@@ -61,9 +78,9 @@ class NavBar extends HTMLElement {
         xhr.open('GET', path, true);
         xhr.onload = () => {
             if (xhr.status === 200) {
-                this.main .innerHTML = xhr.responseText;
+                this.main.innerHTML = xhr.responseText;
             } else if (xhr.status === 404) {
-                this.main .innerHTML = 'Page not found';
+                this.main.innerHTML = 'Page not found';
             }
         }
         xhr.send();
