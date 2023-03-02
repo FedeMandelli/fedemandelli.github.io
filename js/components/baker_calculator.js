@@ -52,25 +52,28 @@ class BakerCalc extends HTMLElement {
         if (changed === 'total_flour_gr') {
             this.strongFlourGr.value = (this.totalFlourGr.value * this.strongFlourPct.value / 100).toFixed(1)
             this.normalFlourGr.value = (this.totalFlourGr.value * this.normalFlourPct.value / 100).toFixed(1)
+            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
             this.waterGr.value = (this.totalFlourGr.value * this.waterPct.value / 100).toFixed(1)
             this.saltGr.value = (this.totalFlourGr.value * this.saltPct.value / 100).toFixed(1)
-            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
+            this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
 
         if (changed === 'strong_flour_gr') {
             this.totalFlourGr.value = (this.strongFlourGr.value / this.strongFlourPct.value * 100).toFixed(1)
             this.normalFlourGr.value = (this.totalFlourGr.value * this.normalFlourPct.value / 100).toFixed(1)
+            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
             this.waterGr.value = (this.totalFlourGr.value * this.waterPct.value / 100).toFixed(1)
             this.saltGr.value = (this.totalFlourGr.value * this.saltPct.value / 100).toFixed(1)
-            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
+            this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
 
         if (changed === 'normal_flour_gr') {
             this.totalFlourGr.value = (this.normalFlourGr.value / this.normalFlourPct.value * 100).toFixed(1)
             this.strongFlourGr.value = (this.totalFlourGr.value * this.strongFlourPct.value / 100).toFixed(1)
+            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
             this.waterGr.value = (this.totalFlourGr.value * this.waterPct.value / 100).toFixed(1)
             this.saltGr.value = (this.totalFlourGr.value * this.saltPct.value / 100).toFixed(1)
-            this.starterGr.value = (this.totalFlourGr.value * this.starterPct.value / 100).toFixed(1)
+            this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
 
         if (changed === 'strong_flour_pct') {
@@ -95,6 +98,7 @@ class BakerCalc extends HTMLElement {
             this.normalFlourGr.value = (this.totalFlourGr.value * this.normalFlourPct.value / 100).toFixed(1)
             this.waterGr.value = (this.totalFlourGr.value * this.waterPct.value / 100).toFixed(1)
             this.saltGr.value = (this.totalFlourGr.value * this.saltPct.value / 100).toFixed(1)
+            this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
 
         if (changed === 'water_pct') {
