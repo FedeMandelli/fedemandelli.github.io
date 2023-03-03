@@ -46,11 +46,11 @@ nav-bar {
             transition: 300ms ease-in-out;
 
             &:nth-child(1) {
-                transform: translateY(-0.6rem);
+                transform: translateY(-0.5rem);
             }
 
             &:nth-child(2) {
-                transform: translateY(0.6rem);
+                transform: translateY(0.5rem);
             }
         }
 
@@ -60,7 +60,6 @@ nav-bar {
 
         &.menu-button-open {
             span {
-                position: absolute;
                 &:nth-child(1) {
                     transform: rotate(-45deg);
                 }
@@ -120,7 +119,7 @@ nav-bar {
 
         @media (max-width: 768px) {
             position: absolute;
-            top: 2.5rem;
+            top: 2rem;
             right: 0;
             flex-direction: column;
             background-color: $primary-color;
@@ -129,7 +128,7 @@ nav-bar {
             transition: 300ms ease-in-out;
 
             &.links-container-open {
-                max-height: calc(2.5rem * 3);
+                max-height: calc(2rem * 3);
             }
         }
     }
