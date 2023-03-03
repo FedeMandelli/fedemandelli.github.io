@@ -1,24 +1,24 @@
 nav-bar {
     background-color: $primary-color;
     color: $secondary-color;
-    font-size: 1rem;
+    font-size: 1.5rem;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
 
     .nav-logo {
         fill: $accent-color;
-        height: 2rem;
+        height: 2.5rem;
         cursor: pointer;
         transition: 300ms ease-in-out;
-        padding: 0.2rem;
+        padding: 0.25rem;
         margin-left: 0.5rem;
 
         &:hover {
             fill: $secondary-color;
-            padding: 0.1rem;
+            padding: 0.2rem;
         }
     }
 
@@ -71,6 +71,7 @@ nav-bar {
                 }
 
                 &:nth-child(3) {
+                    transform: translateX(25%);
                     opacity: 0;
                 }
             }
@@ -119,16 +120,16 @@ nav-bar {
 
         @media (max-width: 768px) {
             position: absolute;
-            top: 2rem;
+            top: 2.5rem;
             right: 0;
             flex-direction: column;
             background-color: $primary-color;
             max-height: 0;
             overflow: hidden;
+            transition: 300ms ease-in-out;
 
             &.links-container-open {
-                max-height: 6rem;
-                transition: 300ms ease-in-out;
+                max-height: calc(2.5rem * 3);
             }
         }
     }
