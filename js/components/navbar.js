@@ -45,8 +45,8 @@ class NavBar extends HTMLElement {
 
         // load new page with fade effect
         this.mainSection.style.opacity = 0
-        setTimeout(() => {
-            this.loadHtml(`/html/${target}.html`)
+        setTimeout(async () => {
+            await this.loadHtml(`/html/${target}.html`)
             this.mainSection.style.opacity = 1
         }, 400)
 
