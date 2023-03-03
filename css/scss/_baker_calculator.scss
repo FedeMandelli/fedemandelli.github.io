@@ -1,5 +1,5 @@
 .baker-table {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
     border-collapse: collapse;
     table-layout: fixed;
@@ -19,6 +19,11 @@
 
             &:first-child {
                 width: 50%;
+                border-top-left-radius: 0.25rem;
+            }
+
+            &:last-child {
+                border-top-right-radius: 0.25rem;
             }
         }
     }
@@ -34,7 +39,7 @@
 
         td {
             text-align: center;
-            padding: 0.5rem;
+            padding: 0.25rem;
 
             &:first-child {
                 text-align: right;
@@ -42,35 +47,17 @@
         }
 
         input {
-            font-size: 1.5rem;
+            font-size: 1rem;
             width: 100%;
             text-align: center;
-            padding: 0.5rem;
             background-color: transparent;
         }
     }
 
-    @media (max-width: 768px) {
-        width: 90%;
-
-        thead th,
-        tbody td,
-        tbody input {
-            font-size: 1rem;
-            padding: 0.25rem;
-        }
-    }
-}
-
-.jobs-table {
-    th {
-        width: 50%;
-    }
-
     input[type="checkbox"] {
         appearance: none;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1rem;
+        height: 1rem;
         background-color: red;
         border-radius: 0.25rem;
         transition: 300ms ease-in-out;
@@ -78,10 +65,15 @@
         &:checked {
             background-color: green;
         }
+    }
 
-        @media (max-width: 768px) {
-            width: 1rem;
-            height: 1rem;
-        }
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}
+
+.jobs-table {
+    th {
+        width: 50%;
     }
 }
