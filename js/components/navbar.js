@@ -40,15 +40,35 @@ class NavBar extends HTMLElement {
         var target = page || 'home' // === TO CHANGE IN PRODUCTION ===
         target = target.charAt(0) === '/' ? target.substring(1) : target
 
-        // update url         
-        window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
-
-        // load new page with fade effect
+        // fade out current page
         this.mainSection.style.opacity = 0
-        setTimeout(async () => {
-            await this.loadHtml(`/html/${target}.html`)
-            this.mainSection.style.opacity = 1
-        }, 400)
+
+        // fetch html
+        setTimeout(() => {
+            fetch(`/html/${target}.html`)
+                .then(response => {
+                    // page found
+                    if (response.status === 200) {
+                        return response.text()
+                    }
+
+                    // page not found
+                    else if (response.status === 404) {
+                        return 'Page not found'
+                    }
+                })
+                .then(html => {
+                    // set page content
+                    this.mainSection.innerHTML = html
+
+                    // update url         
+                    window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
+                })
+                .then(() => {
+                    // fade in new page
+                    this.mainSection.style.opacity = 1
+                })
+        }, 400);
 
         // set active link
         const links = this.querySelectorAll('a')
@@ -62,19 +82,6 @@ class NavBar extends HTMLElement {
 
         // close menu
         this.closeMenu()
-    }
-
-    loadHtml(path) {
-        const xhr = new XMLHttpRequest()
-        xhr.open('GET', path, true)
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                this.mainSection.innerHTML = xhr.responseText
-            } else if (xhr.status === 404) {
-                this.mainSection.innerHTML = 'Page not found'
-            }
-        }
-        xhr.send()
     }
 
     toggleMenu() {
