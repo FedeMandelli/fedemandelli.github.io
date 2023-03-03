@@ -48,6 +48,15 @@ class BakerCalc extends HTMLElement {
         // get changed element
         const changed = e.target.id
 
+        // check input limits
+        const value = parseFloat(e.target.value);
+        if (value < 0) {
+            e.target.value = 0
+        }
+        if (value > 100 && e.target.id.endsWith('Pct')) {
+            e.target.value = 100
+        }
+
         // calculate
         if (changed === 'total_flour_gr') {
             this.strongFlourGr.value = (this.totalFlourGr.value * this.strongFlourPct.value / 100).toFixed(1)
