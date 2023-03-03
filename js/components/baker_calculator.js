@@ -1,60 +1,46 @@
-class BakerCalc extends HTMLElement {
+// === Ingredients Calculator ===
+class IngredientsCalc extends HTMLElement {
     constructor() {
         super()
     }
 
     connectedCallback() {
-        // Get the template
-        this.totalFlourGr = this.querySelector('#total_flour_gr')
-        this.strongFlourGr = this.querySelector('#strong_flour_gr')
-        this.strongFlourPct = this.querySelector('#strong_flour_pct')
-        this.normalFlourGr = this.querySelector('#normal_flour_gr')
-        this.normalFlourPct = this.querySelector('#normal_flour_pct')
-        this.starterPct = this.querySelector('#starter_pct')
-        this.starterGr = this.querySelector('#starter_gr')
-        this.waterPct = this.querySelector('#water_pct')
-        this.waterGr = this.querySelector('#water_gr')
-        this.saltPct = this.querySelector('#salt_pct')
-        this.saltGr = this.querySelector('#salt_gr')
-        this.oilPct = this.querySelector('#oil_pct')
-        this.oilGr = this.querySelector('#oil_gr')
+        // Get the inputs
+        this.inputs = [this.totalFlourGr = this.querySelector('#total_flour_gr'),
+        this.strongFlourGr = this.querySelector('#strong_flour_gr'),
+        this.strongFlourPct = this.querySelector('#strong_flour_pct'),
+        this.normalFlourGr = this.querySelector('#normal_flour_gr'),
+        this.normalFlourPct = this.querySelector('#normal_flour_pct'),
+        this.starterPct = this.querySelector('#starter_pct'),
+        this.starterGr = this.querySelector('#starter_gr'),
+        this.waterPct = this.querySelector('#water_pct'),
+        this.waterGr = this.querySelector('#water_gr'),
+        this.saltPct = this.querySelector('#salt_pct'),
+        this.saltGr = this.querySelector('#salt_gr'),
+        this.oilPct = this.querySelector('#oil_pct'),
+        this.oilGr = this.querySelector('#oil_gr')]
 
-        // Add event listeners for changes
-        this.totalFlourGr.addEventListener('input', (e) => this.update(e))
-        this.strongFlourGr.addEventListener('input', (e) => this.update(e))
-        this.strongFlourPct.addEventListener('input', (e) => this.update(e))
-        this.normalFlourGr.addEventListener('input', (e) => this.update(e))
-        this.normalFlourPct.addEventListener('input', (e) => this.update(e))
-        this.starterPct.addEventListener('input', (e) => this.update(e))
-        this.starterGr.addEventListener('input', (e) => this.update(e))
-        this.waterPct.addEventListener('input', (e) => this.update(e))
-        this.saltPct.addEventListener('input', (e) => this.update(e))
-        this.oilPct.addEventListener('input', (e) => this.update(e))
+        // Add event listeners
+        this.inputs.forEach(input => {
+            input.addEventListener('input', (e) => this.update(e))
+            input.addEventListener('wheel', () => { })
+        })
 
-        // Add event listener for scroll wheel
-        this.totalFlourGr.addEventListener('wheel', (e) => this.scroll(e))
-        this.strongFlourGr.addEventListener('wheel', (e) => this.scroll(e))
-        this.strongFlourPct.addEventListener('wheel', (e) => this.scroll(e))
-        this.normalFlourGr.addEventListener('wheel', (e) => this.scroll(e))
-        this.normalFlourPct.addEventListener('wheel', (e) => this.scroll(e))
-        this.starterPct.addEventListener('wheel', (e) => this.scroll(e))
-        this.starterGr.addEventListener('wheel', (e) => this.scroll(e))
-        this.waterPct.addEventListener('wheel', (e) => this.scroll(e))
-        this.saltPct.addEventListener('wheel', (e) => this.scroll(e))
-        this.oilPct.addEventListener('wheel', (e) => this.scroll(e))
+        // Set initial values
+        this.totalFlourGr.value = 500
+        this.update({ target: this.totalFlourGr })
     }
 
     update(e) {
         // get changed element
         const changed = e.target.id
-        console.log(changed)
 
         // check input limits
         const value = parseFloat(e.target.value);
         if (value < 0) { e.target.value = 0 }
         if (value > 100 && changed.endsWith('pct')) { e.target.value = 100 }
 
-        // calculate
+        // calculations
         if (changed === 'total_flour_gr') {
             this.strongFlourGr.value = (this.totalFlourGr.value * this.strongFlourPct.value / 100).toFixed(1)
             this.normalFlourGr.value = (this.totalFlourGr.value * this.normalFlourPct.value / 100).toFixed(1)
@@ -120,5 +106,114 @@ class BakerCalc extends HTMLElement {
         }
     }
 }
+window.customElements.define('ingredients-calc', IngredientsCalc);
 
-window.customElements.define('baker-calc', BakerCalc);
+// === Jobs Calculator ===
+class JobsCalc extends HTMLElement {
+    constructor() {
+        super()
+    }
+
+    connectedCallback() {
+        // get the inputs
+        this.inputs = [
+            this.firstMixWait = this.querySelector('#first_mix_wait'),
+            this.firstMixTime = this.querySelector('#first_mix_time'),
+            this.secondMixWait = this.querySelector('#second_mix_wait'),
+            this.secondMixTime = this.querySelector('#second_mix_time'),
+            this.firstFoldWait = this.querySelector('#first_fold_wait'),
+            this.firstFoldTime = this.querySelector('#first_fold_time'),
+            this.secondFoldWait = this.querySelector('#second_fold_wait'),
+            this.secondFoldTime = this.querySelector('#second_fold_time'),
+            this.thirdFoldTime = this.querySelector('#third_fold_time')
+        ]
+
+        // add event listeners
+        this.inputs.forEach(input => {
+            input.addEventListener('input', (e) => this.update(e))
+            input.addEventListener('wheel', () => { })
+        })
+        this.querySelector('#reset').addEventListener('click', () => this.resetTable())
+
+        // reset table
+        this.resetTable()
+
+    }
+
+    update(e) {
+        // get the changed input
+        const changed = e.target.id
+
+        // check input limits
+        const value = parseFloat(e.target.value);
+        if (value < 0 && e.target.type === 'number') { e.target.value = 0 }
+
+        // calculations
+        if (changed === 'first_mix_time') {
+            this.secondMixTime.value = this.addSubtractTime(this.firstMixTime, this.firstMixWait, true)
+            this.firstFoldTime.value = this.addSubtractTime(this.secondMixTime, this.secondMixWait, true)
+            this.secondFoldTime.value = this.addSubtractTime(this.firstFoldTime, this.firstFoldWait, true)
+            this.thirdFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.secondFoldWait, true)
+        }
+
+        if (changed === 'third_fold_time') {
+            this.secondFoldTime.value = this.addSubtractTime(this.thirdFoldTime, this.secondFoldWait, false)
+            this.firstFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.firstFoldWait, false)
+            this.secondMixTime.value = this.addSubtractTime(this.firstFoldTime, this.firstMixWait, false)
+            this.firstMixTime.value = this.addSubtractTime(this.secondMixTime, this.firstMixWait, false)
+        }
+
+        if (changed === 'first_mix_wait') {
+            this.secondMixTime.value = this.addSubtractTime(this.firstMixTime, this.firstMixWait, true)
+            this.firstFoldTime.value = this.addSubtractTime(this.secondMixTime, this.secondMixWait, true)
+            this.secondFoldTime.value = this.addSubtractTime(this.firstFoldTime, this.firstFoldWait, true)
+            this.thirdFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.secondFoldWait, true)
+        }
+
+        if (changed === 'second_mix_wait') {
+            this.firstFoldTime.value = this.addSubtractTime(this.secondMixTime, this.secondMixWait, true)
+            this.secondFoldTime.value = this.addSubtractTime(this.firstFoldTime, this.firstFoldWait, true)
+            this.thirdFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.secondFoldWait, true)
+        }
+
+        if (changed === 'first_fold_wait') {
+            this.secondFoldTime.value = this.addSubtractTime(this.firstFoldTime, this.firstFoldWait, true)
+            this.thirdFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.secondFoldWait, true)
+        }
+
+        if (changed === 'second_fold_wait') {
+            this.thirdFoldTime.value = this.addSubtractTime(this.secondFoldTime, this.secondFoldWait, true)
+        }
+    }
+
+    addSubtractTime(time, wait, sum) {
+        // convert inputs to seconds
+        const timeInSeconds = time.valueAsNumber / 1000
+        const waitInSeconds = wait.valueAsNumber * 60
+
+        // calculate the new time
+        const newTimeInSeconds = sum ? timeInSeconds + waitInSeconds : timeInSeconds - waitInSeconds
+
+        // convert seconds to time format
+        const hours = Math.floor(newTimeInSeconds / 3600)
+        const minutes = Math.floor((newTimeInSeconds - (hours * 3600)) / 60)
+        const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+
+        return formattedTime
+    }
+
+    resetTable() {
+        // set the initial values
+        this.thirdFoldTime.value = '18:30'
+        this.firstMixWait.value = 60
+        this.secondMixWait.value = 40
+        this.firstFoldWait.value = 40
+        this.secondFoldWait.value = 40
+        this.update({ target: this.thirdFoldTime })
+
+        // clear checks
+        this.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false)
+    }
+}
+
+window.customElements.define('jobs-calc', JobsCalc);
