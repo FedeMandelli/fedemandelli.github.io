@@ -41,7 +41,7 @@ class NavBar extends HTMLElement {
         target = target.charAt(0) === '/' ? target.substring(1) : target
 
         // update url         
-        // window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
+        window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
 
         // load new page with fade effect
         this.mainSection.style.opacity = 0
