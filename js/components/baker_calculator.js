@@ -47,15 +47,12 @@ class BakerCalc extends HTMLElement {
     update(e) {
         // get changed element
         const changed = e.target.id
+        console.log(changed)
 
         // check input limits
         const value = parseFloat(e.target.value);
-        if (value < 0) {
-            e.target.value = 0
-        }
-        if (value > 100 && e.target.id.endsWith('Pct')) {
-            e.target.value = 100
-        }
+        if (value < 0) { e.target.value = 0 }
+        if (value > 100 && changed.endsWith('pct')) { e.target.value = 100 }
 
         // calculate
         if (changed === 'total_flour_gr') {
