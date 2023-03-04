@@ -30,7 +30,9 @@ class NavBar extends HTMLElement {
         })
 
         // set first page
-        this.loadPage(window.location.pathname)
+        const params = new URLSearchParams(window.location.search)
+        const target = params.get('page')
+        this.loadPage(target)
     }
 
     loadPage(page) {
