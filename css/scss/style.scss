@@ -4,12 +4,15 @@
 @import "standard_elements";
 @import "custom_functions";
 
+// elements
+@import "buttons";
+
 // main structure
 @import "basic_layout";
-@import "navbar";
+@import "components/navbar";
 @import "footer";
-@import "page_content";
 
 // components
-@import "contact_form";
-@import "baker_calculator";
+@import "components/contact_form";
+@import "components/baker_calculator";
+@import "components/pomodoro_timer";
