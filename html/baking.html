@@ -1,8 +1,9 @@
 <page-content page-name="about">
-    <h1 class="m-1">Baking Calculator</h1>
+    <h1 class="text-center">Baking Calculator</h1>
+    <div class="text-center fs-08 m-1">Click on the header to reset the table</div>
     <ingredients-calc>
         <table class="baker-table">
-            <thead>
+            <thead id="reset">
                 <tr>
                     <th>ingredient</th>
                     <th>%</th>
@@ -18,37 +19,37 @@
 
                 <tr>
                     <td>strong flour</td>
-                    <td><input id="strong_flour_pct" type="number" value="80"></td>
+                    <td><input id="strong_flour_pct" type="number"></td>
                     <td><input id="strong_flour_gr" type="number"></td>
                 </tr>
 
                 <tr>
                     <td>normal flour</td>
-                    <td><input id="normal_flour_pct" type="number" value="20"></td>
+                    <td><input id="normal_flour_pct" type="number"></td>
                     <td><input id="normal_flour_gr" type="number"></td>
                 </tr>
 
                 <tr>
                     <td>starter</td>
-                    <td><input id="starter_pct" type="number" value="25"></td>
+                    <td><input id="starter_pct" type="number"></td>
                     <td><input id="starter_gr" type="number"></td>
                 </tr>
 
                 <tr>
                     <td>water</td>
-                    <td><input id="water_pct" type="number" value="70"></td>
+                    <td><input id="water_pct" type="number"></td>
                     <td><input id="water_gr" type="number" disabled></td>
                 </tr>
 
                 <tr>
                     <td>salt</td>
-                    <td><input id="salt_pct" type="number" value="1"></td>
+                    <td><input id="salt_pct" type="number"></td>
                     <td><input id="salt_gr" type="number" disabled></td>
                 </tr>
 
                 <tr>
                     <td>oil</td>
-                    <td><input id="oil_pct" type="number" value="1.5"></td>
+                    <td><input id="oil_pct" type="number"></td>
                     <td><input id="oil_gr" type="number" disabled></td>
                 </tr>
         </table>
@@ -56,23 +57,23 @@
 
     <jobs-calc class="m-1">
         <table class="baker-table jobs-table">
-            <thead>
+            <thead id="reset">
                 <tr>
                     <th>job</th>
                     <th>time</th>
                     <th>wait (m)</th>
-                    <th id="reset">progress</th>
+                    <th>progress</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>first mix</td>
+                    <td>1st mix</td>
                     <td><input id="first_mix_time" type="time"></td>
                     <td><input id="first_mix_wait" type="number"></td>
                     <td><input type="checkbox"></td>
                 </tr>
                 <tr>
-                    <td>second mix</td>
+                    <td>2nd mix</td>
                     <td><input id="second_mix_time" type="time" disabled></td>
                     <td><input id="second_mix_wait" type="number"></td>
                     <td><input type="checkbox"></td>

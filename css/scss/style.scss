@@ -1,12 +1,14 @@
 // primary imports
 @import "colors";
 @import "generators";
+@import "standard_elements";
+@import "custom_functions";
 
 // main structure
 @import "basic_layout";
-@import "standard_elements";
 @import "navbar";
 @import "footer";
+@import "page_content";
 
 // components
 @import "contact_form";

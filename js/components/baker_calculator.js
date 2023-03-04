@@ -25,10 +25,10 @@ class IngredientsCalc extends HTMLElement {
             input.addEventListener('input', (e) => this.update(e))
             input.addEventListener('wheel', () => { })
         })
+        this.querySelector('#reset').addEventListener('click', () => this.resetTable())
 
         // Set initial values
-        this.totalFlourGr.value = 500
-        this.update({ target: this.totalFlourGr })
+        this.resetTable()
     }
 
     update(e) {
@@ -104,6 +104,20 @@ class IngredientsCalc extends HTMLElement {
         if (changed === 'oil_pct') {
             this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
+    }
+
+    resetTable() {
+        // set initial values
+        this.totalFlourGr.value = 500
+        this.strongFlourPct.value = 80
+        this.normalFlourPct.value = 10
+        this.starterPct.value = 10
+        this.waterPct.value = 60
+        this.saltPct.value = 2
+        this.oilPct.value = 2
+
+        // update the table
+        this.update({ target: this.totalFlourGr })
     }
 }
 window.customElements.define('ingredients-calc', IngredientsCalc);
@@ -213,6 +227,8 @@ class JobsCalc extends HTMLElement {
         this.secondMixWait.value = 40
         this.firstFoldWait.value = 40
         this.secondFoldWait.value = 40
+
+        // update the table
         this.update({ target: this.thirdFoldTime })
 
         // clear checks
