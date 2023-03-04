@@ -25,11 +25,17 @@ class PomodoroTimer extends HTMLElement {
     }
 
     workTimeChanged() {
+        const value = this.workTimeInput.value
+        if (value < 1) { this.workTimeInput.value = 1 }
+        if (value > 60) { this.workTimeInput.value = 60 }
         this.workTime = this.workTimeInput.value
         this.timestamp.innerHTML = this.secondsToTimestamp(this.workTime * 60)
     }
 
     breakTimeChanged() {
+        const value = this.breakTimeInput.value
+        if (value < 1) { this.breakTimeInput.value = 1 }
+        if (value > 60) { this.breakTimeInput.value = 60 }
         this.breakTime = this.breakTimeInput.value
     }
 
@@ -82,7 +88,7 @@ class PomodoroTimer extends HTMLElement {
         // start timer
         this.timer = setInterval(() => {
             // update time and timestamp
-            this.time--
+            this.time -= .2
             this.timestamp.innerHTML = this.secondsToTimestamp(this.time)
 
             // updade circle
@@ -91,10 +97,10 @@ class PomodoroTimer extends HTMLElement {
             this.timestampContainer.style.background = `conic-gradient(${color} ${percLeft}%, transparent ${percLeft}%)`
 
             // end session
-            if (this.time == 0) {
+            if (this.time <= 0) {
                 this.switchSession()
             }
-        }, 1000)
+        }, 200)
     }
 
     stopTimer() {
@@ -130,7 +136,7 @@ class PomodoroTimer extends HTMLElement {
 
     secondsToTimestamp(seconds) {
         let min = Math.floor(seconds / 60)
-        let sec = seconds % 60
+        let sec = Math.floor(seconds % 60)
         return (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec)
     }
 
