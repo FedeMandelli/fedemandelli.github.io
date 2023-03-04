@@ -1,2 +1,40 @@
 pomodoro-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .timestamp-container {
+        border-radius: 50%;
+        padding: 1rem;
+        border: 1px solid $primary-color;
+
+        .timestamp {
+            font-size: 3rem;
+            background-color: $secondary-color;
+            border-radius: 50%;
+            padding: 33% 1rem;
+            border: 1px solid $primary-color;
+        }
+    }
+
+    .settings {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            display: block;
+            font-size: 2rem;
+            text-align: center;
+            padding: 0.25rem 0.5rem;
+            background-color: transparent;
+        }
+
+        label {
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+    }
 }

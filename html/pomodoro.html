@@ -1,3 +1,19 @@
 <pomodoro-timer>
-    <button>Notification</button>
+    <div class="timestamp-container">
+        <div class="timestamp"></div>
+    </div>
+    <div class="buttons-container">
+        <button id="start_pause">Start</button>
+        <button id="reset">Reset</button>
+    </div>
+    <div class="settings">
+        <div>
+            <input type="number" id="work_time" min="1" max="60" step="1">
+            <label for="work">Work</label>
+        </div>
+        <div>
+            <input type="number" id="break_time" min="1" max="60" step="1">
+            <label for="break">Break</label>
+        </div>
+    </div>
 </pomodoro-timer>
