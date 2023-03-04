@@ -192,7 +192,11 @@ class JobsCalc extends HTMLElement {
         const waitInSeconds = wait.valueAsNumber * 60
 
         // calculate the new time
-        const newTimeInSeconds = sum ? timeInSeconds + waitInSeconds : timeInSeconds - waitInSeconds
+        var newTimeInSeconds = sum ? timeInSeconds + waitInSeconds : timeInSeconds - waitInSeconds
+
+        // check if over midnight
+        if (newTimeInSeconds >= 86400) { newTimeInSeconds -= 86400 }
+        if (newTimeInSeconds < 0) { newTimeInSeconds += 86400 }
 
         // convert seconds to time format
         const hours = Math.floor(newTimeInSeconds / 3600)
