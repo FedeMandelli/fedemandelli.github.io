@@ -37,7 +37,7 @@ class NavBar extends HTMLElement {
 
     loadPage(page) {
         // reformat page name
-        var target = page || 'pomodoro' // === TO CHANGE IN PRODUCTION ===
+        var target = page || 'home' // === TO CHANGE IN PRODUCTION ===
         target = target.charAt(0) === '/' ? target.substring(1) : target
 
         // fade out current page
@@ -62,7 +62,7 @@ class NavBar extends HTMLElement {
                     this.mainSection.innerHTML = html
 
                     // update url         
-                    // window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
+                    window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
                 })
                 .then(() => {
                     // fade in new page
