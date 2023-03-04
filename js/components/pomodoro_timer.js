@@ -113,6 +113,9 @@ class PomodoroTimer extends HTMLElement {
         this.state = 'stopped'
         this.startPauseButton.innerHTML = 'Start'
 
+        // notify user
+        this.notification()
+
         // switch session
         if (this.session == 'work') {
             this.session = 'break'
@@ -148,6 +151,13 @@ class PomodoroTimer extends HTMLElement {
         this.workTimeInput.removeEventListener('wheel', () => { })
         this.breakTimeInput.removeEventListener('input', this.breakTimeChanged)
         this.breakTimeInput.removeEventListener('wheel', () => { })
+    }
+
+    notification() {
+        const notification = new Notification('Pomodoro Timer', {
+            body: `Your ${this.session} session is over!`,
+            icon: '/media/imgs/alarm.svg',
+        })
     }
 }
 
