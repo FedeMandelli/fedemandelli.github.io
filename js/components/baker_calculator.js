@@ -110,11 +110,11 @@ class IngredientsCalc extends HTMLElement {
         // set initial values
         this.totalFlourGr.value = 500
         this.strongFlourPct.value = 80
-        this.normalFlourPct.value = 10
-        this.starterPct.value = 10
-        this.waterPct.value = 60
+        this.normalFlourPct.value = 20
+        this.starterPct.value = 25
+        this.waterPct.value = 70
         this.saltPct.value = 2
-        this.oilPct.value = 2
+        this.oilPct.value = 4
 
         // update the table
         this.update({ target: this.totalFlourGr })
