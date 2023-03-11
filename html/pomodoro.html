@@ -1,19 +1,38 @@
-<pomodoro-timer>
-    <div class="timestamp-container">
-        <div class="timestamp"></div>
-    </div>
-    <div class="buttons-container">
-        <button id="start_pause">Start</button>
-        <button id="reset">Reset</button>
-    </div>
-    <div class="settings">
-        <div>
-            <label for="work">Work</label>
-            <input type="number" id="work_time" min="1" max="60" step="1">
-        </div>
-        <div>
-            <label for="break">Break</label>
-            <input type="number" id="break_time" min="1" max="60" step="1">
-        </div>
-    </div>
-</pomodoro-timer>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fede Mandelli | Pomodoro</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="/media/imgs/logo.svg">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <script type="module" src="/js/components/pomodoro_timer.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <pomodoro-timer>
+            <div class="timestamp-container">
+                <div class="timestamp"></div>
+            </div>
+            <div class="buttons-container">
+                <button id="start_pause">Start</button>
+                <button id="reset">Reset</button>
+            </div>
+            <div class="settings">
+                <div>
+                    <label for="work">Work</label>
+                    <input type="number" id="work_time" min="1" max="60" step="1">
+                </div>
+                <div>
+                    <label for="break">Break</label>
+                    <input type="number" id="break_time" min="1" max="60" step="1">
+                </div>
+            </div>
+        </pomodoro-timer>
+    </main>
+</body>
+
+</html>

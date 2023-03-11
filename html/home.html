@@ -1,4 +1,13 @@
-<h1 class="text-center">
-    <p>Coming</p>
-    <p>Soon</p>
-</h1>
+<h1 class="text-center">Tools List</h1>
+<ul>
+    <li>
+        <p class="button" id="open_pomodoro">Pomodoro Timer</button>
+    </li>
+</ul>
+
+<script type="module">
+    // pomodoro window
+    import { openPomodoro } from '/js/general/open_pomodoro.js';
+    document.getElementById('open_pomodoro')
+        .addEventListener('click', openPomodoro);
+</script>

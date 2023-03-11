@@ -22,6 +22,9 @@ class PomodoroTimer extends HTMLElement {
 
         // set default state
         this.reset()
+
+        // request notification permission
+        Notification.requestPermission()
     }
 
     workTimeChanged() {
@@ -154,13 +157,12 @@ class PomodoroTimer extends HTMLElement {
     }
 
     notification() {
-        try {
-            const notification = new Notification('Pomodoro Timer', {
-                body: `Your ${this.session} session is over!`,
-                icon: '/media/imgs/alarm.svg',
-            })
-        }
-        catch (e) { }
+        if (Notification.permission !== 'granted') return
+
+        const notification = new Notification('Pomodoro Timer', {
+            body: `Your ${this.session} session is over!`,
+            icon: '/media/imgs/alarm.svg',
+        })
     }
 }
 

@@ -1,4 +1,4 @@
-// utilities
+// general
 import "./general/utilities.js"
 
 // components

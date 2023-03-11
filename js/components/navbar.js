@@ -18,7 +18,7 @@ class NavBar extends HTMLElement {
         window.addEventListener('resize', () => { if (window.innerWidth > 768) { this.closeMenu() } })
 
         // create pages
-        const pages = ['home', 'baking', 'pomodoro','contact']
+        const pages = ['home', 'baking', 'contact']
         const linksContainer = this.querySelector('.links-container')
         pages.forEach(page => {
             const link = document.createElement('a')
@@ -59,7 +59,8 @@ class NavBar extends HTMLElement {
                 })
                 .then(html => {
                     // set page content
-                    this.mainSection.innerHTML = html
+                    this.mainSection.innerHTML = ''
+                    this.mainSection.appendChild(document.createRange().createContextualFragment(html))
 
                     // update url         
                     window.history.pushState({}, '', target) // === TO CHANGE IN PRODUCTION ===
