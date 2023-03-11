@@ -1,13 +1,20 @@
-<h1 class="text-center">Tools List</h1>
+<h1 class="text-center m-1">Tools List</h1>
 <ul>
     <li>
         <p class="button" id="open_pomodoro">Pomodoro Timer</button>
+        <p class="button" id="open_baking">Baking Tools</button>
     </li>
 </ul>
 
 <script type="module">
+    // imports
+    import { openPomodoro, openBaking } from '/js/general/open_tools.js'
+
     // pomodoro window
-    import { openPomodoro } from '/js/general/open_pomodoro.js';
     document.getElementById('open_pomodoro')
-        .addEventListener('click', openPomodoro);
+        .addEventListener('click', openPomodoro)
+
+    // baking window
+    document.getElementById('open_baking')
+        .addEventListener('click', openBaking)
 </script>

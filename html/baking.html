@@ -1,100 +1,119 @@
-<h1 class="text-center">Baking Calculator</h1>
-<div class="text-center fs-08 m-1">Click on the header to reset the table</div>
-<ingredients-calc>
-    <table class="baker-table">
-        <thead id="reset">
-            <tr>
-                <th>ingredient</th>
-                <th>%</th>
-                <th>grams</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>total flour</td>
-                <td><input type="number" value="100" disabled></td>
-                <td><input id="total_flour_gr" type="number"></td>
-            </tr>
+<!DOCTYPE html>
+<html lang="en">
 
-            <tr>
-                <td>strong flour</td>
-                <td><input id="strong_flour_pct" type="number"></td>
-                <td><input id="strong_flour_gr" type="number"></td>
-            </tr>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fede Mandelli | Pomodoro</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="/media/imgs/logo.svg">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <script type="module" src="/js/components/baker_calculator.js" defer></script>
+</head>
 
-            <tr>
-                <td>normal flour</td>
-                <td><input id="normal_flour_pct" type="number"></td>
-                <td><input id="normal_flour_gr" type="number"></td>
-            </tr>
+<body>
+    <main>
+        <h1 class="text-center">Baking Calculator</h1>
+        <div class="text-center fs-08 m-1">Click on the header to reset the table</div>
+        <ingredients-calc>
+            <table class="baker-table">
+                <thead id="reset">
+                    <tr>
+                        <th>ingredient</th>
+                        <th>%</th>
+                        <th>grams</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>total flour</td>
+                        <td><input type="number" value="100" disabled></td>
+                        <td><input id="total_flour_gr" type="number"></td>
+                    </tr>
 
-            <tr>
-                <td>starter</td>
-                <td><input id="starter_pct" type="number"></td>
-                <td><input id="starter_gr" type="number"></td>
-            </tr>
+                    <tr>
+                        <td>strong flour</td>
+                        <td><input id="strong_flour_pct" type="number"></td>
+                        <td><input id="strong_flour_gr" type="number"></td>
+                    </tr>
 
-            <tr>
-                <td>water</td>
-                <td><input id="water_pct" type="number"></td>
-                <td><input id="water_gr" type="number" disabled></td>
-            </tr>
+                    <tr>
+                        <td>normal flour</td>
+                        <td><input id="normal_flour_pct" type="number"></td>
+                        <td><input id="normal_flour_gr" type="number"></td>
+                    </tr>
 
-            <tr>
-                <td>salt</td>
-                <td><input id="salt_pct" type="number"></td>
-                <td><input id="salt_gr" type="number" disabled></td>
-            </tr>
+                    <tr>
+                        <td>starter</td>
+                        <td><input id="starter_pct" type="number"></td>
+                        <td><input id="starter_gr" type="number"></td>
+                    </tr>
 
-            <tr>
-                <td>oil</td>
-                <td><input id="oil_pct" type="number"></td>
-                <td><input id="oil_gr" type="number" disabled></td>
-            </tr>
-    </table>
-</ingredients-calc>
+                    <tr>
+                        <td>water</td>
+                        <td><input id="water_pct" type="number"></td>
+                        <td><input id="water_gr" type="number" disabled></td>
+                    </tr>
 
-<jobs-calc class="mt-1">
-    <table class="baker-table jobs-table">
-        <thead id="reset">
-            <tr>
-                <th>job</th>
-                <th>time</th>
-                <th>wait (m)</th>
-                <th>progress</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1st mix</td>
-                <td><input id="first_mix_time" type="time"></td>
-                <td><input id="first_mix_wait" type="number"></td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>2nd mix</td>
-                <td><input id="second_mix_time" type="time" disabled></td>
-                <td><input id="second_mix_wait" type="number"></td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>1st fold</td>
-                <td><input id="first_fold_time" type="time" disabled></td>
-                <td><input id="first_fold_wait" type="number"></td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>2nd fold</td>
-                <td><input id="second_fold_time" type="time" disabled></td>
-                <td><input id="second_fold_wait" type="number"></td>
-                <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-                <td>3rd fold</td>
-                <td><input id="third_fold_time" type="time"></td>
-                <td></td>
-                <td><input type="checkbox"></td>
-            </tr>
-        </tbody>
-    </table>
-</jobs-calc>
+                    <tr>
+                        <td>salt</td>
+                        <td><input id="salt_pct" type="number"></td>
+                        <td><input id="salt_gr" type="number" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td>oil</td>
+                        <td><input id="oil_pct" type="number"></td>
+                        <td><input id="oil_gr" type="number" disabled></td>
+                    </tr>
+            </table>
+        </ingredients-calc>
+
+        <jobs-calc class="mt-1">
+            <table class="baker-table jobs-table">
+                <thead id="reset">
+                    <tr>
+                        <th>job</th>
+                        <th>time</th>
+                        <th>wait (m)</th>
+                        <th>progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1st mix</td>
+                        <td><input id="first_mix_time" type="time"></td>
+                        <td><input id="first_mix_wait" type="number"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>2nd mix</td>
+                        <td><input id="second_mix_time" type="time" disabled></td>
+                        <td><input id="second_mix_wait" type="number"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>1st fold</td>
+                        <td><input id="first_fold_time" type="time" disabled></td>
+                        <td><input id="first_fold_wait" type="number"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>2nd fold</td>
+                        <td><input id="second_fold_time" type="time" disabled></td>
+                        <td><input id="second_fold_wait" type="number"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>3rd fold</td>
+                        <td><input id="third_fold_time" type="time"></td>
+                        <td></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </jobs-calc>
+    </main>
+</body>
+
+</html>

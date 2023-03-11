@@ -18,7 +18,7 @@ class NavBar extends HTMLElement {
         window.addEventListener('resize', () => { if (window.innerWidth > 768) { this.closeMenu() } })
 
         // create pages
-        const pages = ['home', 'baking', 'contact']
+        const pages = ['home', 'contact']
         const linksContainer = this.querySelector('.links-container')
         pages.forEach(page => {
             const link = document.createElement('a')
