@@ -3,5 +3,20 @@ $primary-color: #333;
 $secondary-color: #f7f7f7;
 $accent-color: #00e1ff;
 
+$palette: (
+    primary: $primary-color,
+    secondary: $secondary-color,
+    accent: $accent-color,
+);
+
+@each $name, $color in $palette {
+    .text-#{$name} {
+        color: $color;
+    }
+    .bg-#{$name} {
+        background-color: $color;
+    }
+}
+
 // shadows
 $default-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);

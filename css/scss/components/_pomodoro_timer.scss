@@ -4,6 +4,10 @@ pomodoro-timer {
     align-items: center;
     justify-content: center;
     color: $primary-color;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: $default-shadow;
 
     .timestamp-container {
         border-radius: 50%;

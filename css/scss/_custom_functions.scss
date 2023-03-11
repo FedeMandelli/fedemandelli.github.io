@@ -1,26 +1,41 @@
+// format
+.container {
+    max-width: 1080px;
+    margin-inline: 2rem;
+
+    &-small {
+        max-width: 800px;
+    }
+}
+
+.m-auto {
+    margin: auto;
+}
+
+// text
 .text-center {
     text-align: center;
 }
 
-.test{
-    background-color: lime;
+.bold {
+    font-weight: 900;
 }
 
-// font size generator
-$font-sizes: (
-    "04": 0.4rem,
-    "06": 0.6rem,
-    "08": 0.8rem,
-    "10": 1rem,
-    "12": 1.2rem,
-    "14": 1.4rem,
-    "16": 1.6rem,
-    "18": 1.8rem,
-    "20": 2rem,
-);
+// flex
+.flex {
+    display: flex;
+}
 
-@each $key, $value in $font-sizes {
-    .fs-#{$key} {
-        font-size: $value;
-    }
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+// debug classes
+.test {
+    background-color: lime;
 }
