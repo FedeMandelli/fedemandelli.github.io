@@ -5,8 +5,9 @@ export function openPomodoro() {
             return response.text()
         })
         .then(html => {
-            const pomodoroWindow = window.open("", "Pomodoro", "width=300,height=400,top=100,left=100,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=yes")
+            const pomodoroWindow = window.open("", "", "width=300,height=400,top=100,left=100,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=yes")
             pomodoroWindow.document.write(html)
+            pomodoroWindow.history.pushState({}, '', 'pomodoro')
             pomodoroWindow.document.close()
         })
 }

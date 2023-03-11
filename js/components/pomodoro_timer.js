@@ -157,12 +157,17 @@ class PomodoroTimer extends HTMLElement {
     }
 
     notification() {
-        if (Notification.permission !== 'granted') return
+        try {
+            if (Notification.permission !== 'granted') return
+            const notification = new Notification('Pomodoro Timer', {
+                body: `Your ${this.session} session is over!`,
+                icon: '/media/imgs/alarm.svg',
+            })
+        }
 
-        const notification = new Notification('Pomodoro Timer', {
-            body: `Your ${this.session} session is over!`,
-            icon: '/media/imgs/alarm.svg',
-        })
+        catch (e){
+            console.log(e)
+        }
     }
 }
 
