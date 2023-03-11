@@ -19,13 +19,13 @@
 
 <script type="module">
     // imports
-    import { openPomodoro, openBaking } from '/js/general/open_tools.js'
+    import { openTools } from '/js/general/open_tools.js'
 
     // pomodoro window
     document.getElementById('open_pomodoro')
-        .addEventListener('click', openPomodoro)
+        .addEventListener('click', () => { openTools('pomodoro', 300, 400) })
 
     // baking window
     document.getElementById('open_baking')
-        .addEventListener('click', openBaking)
+        .addEventListener('click', () => { openTools('baking', 500, 600) })
 </script>
