@@ -14,55 +14,55 @@
 <body>
     <main>
         <h1 class="text-center">Baking Calculator</h1>
-        <div class="text-center fs-08 m-1">Click on the header to reset the table</div>
+        <div class="text-center fs-08 m-1" id="instructions">Click on the header to reset the table</div>
         <ingredients-calc>
             <table class="baker-table">
                 <thead id="reset">
                     <tr>
-                        <th>ingredient</th>
+                        <th id="ingredient_label">Ingredient</th>
                         <th>%</th>
-                        <th>grams</th>
+                        <th id="grams_label">Grams</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>total flour</td>
+                        <td id="total_flour_label">Total Flour</td>
                         <td><input type="number" value="100" disabled></td>
                         <td><input id="total_flour_gr" type="number"></td>
                     </tr>
 
                     <tr>
-                        <td>strong flour</td>
+                        <td id="strong_flour_label">Strong Flour</td>
                         <td><input id="strong_flour_pct" type="number"></td>
                         <td><input id="strong_flour_gr" type="number"></td>
                     </tr>
 
                     <tr>
-                        <td>normal flour</td>
+                        <td id="normal_flour_label">Normal Flour</td>
                         <td><input id="normal_flour_pct" type="number"></td>
                         <td><input id="normal_flour_gr" type="number"></td>
                     </tr>
 
                     <tr>
-                        <td>starter</td>
+                        <td id="starter_label">Starter</td>
                         <td><input id="starter_pct" type="number"></td>
                         <td><input id="starter_gr" type="number"></td>
                     </tr>
 
                     <tr>
-                        <td>water</td>
+                        <td id="water_label">Water</td>
                         <td><input id="water_pct" type="number"></td>
                         <td><input id="water_gr" type="number" disabled></td>
                     </tr>
 
                     <tr>
-                        <td>salt</td>
+                        <td id="salt_label">Salt</td>
                         <td><input id="salt_pct" type="number"></td>
                         <td><input id="salt_gr" type="number" disabled></td>
                     </tr>
 
                     <tr>
-                        <td>oil</td>
+                        <td id="oil_label">Oil</td>
                         <td><input id="oil_pct" type="number"></td>
                         <td><input id="oil_gr" type="number" disabled></td>
                     </tr>
@@ -73,39 +73,39 @@
             <table class="baker-table jobs-table">
                 <thead id="reset">
                     <tr>
-                        <th>job</th>
-                        <th>time</th>
-                        <th>wait (m)</th>
-                        <th>progress</th>
+                        <th id="job_label">Job</th>
+                        <th id="time_label">Time</th>
+                        <th id="wait_label">Wait (m)</th>
+                        <th id="progress_label">Progress</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1st mix</td>
+                        <td id="first_mix_label">1st Mix</td>
                         <td><input id="first_mix_time" type="time"></td>
                         <td><input id="first_mix_wait" type="number"></td>
                         <td><input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td>2nd mix</td>
+                        <td id="second_mix_label">2nd Mix</td>
                         <td><input id="second_mix_time" type="time" disabled></td>
                         <td><input id="second_mix_wait" type="number"></td>
                         <td><input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td>1st fold</td>
+                        <td id="first_fold_label">1st Fold</td>
                         <td><input id="first_fold_time" type="time" disabled></td>
                         <td><input id="first_fold_wait" type="number"></td>
                         <td><input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td>2nd fold</td>
+                        <td id="second_fold_label">2nd Fold</td>
                         <td><input id="second_fold_time" type="time" disabled></td>
                         <td><input id="second_fold_wait" type="number"></td>
                         <td><input type="checkbox"></td>
                     </tr>
                     <tr>
-                        <td>3rd fold</td>
+                        <td id="third_fold_label">3rd Fold</td>
                         <td><input id="third_fold_time" type="time"></td>
                         <td></td>
                         <td><input type="checkbox"></td>
@@ -113,6 +113,11 @@
                 </tbody>
             </table>
         </jobs-calc>
+
+        <div class="language mt-1">
+            <p id="lang_eng" class="selected">English</p>
+            <p id="lang_ita">Italiano</p>
+        </div>
     </main>
 </body>
 

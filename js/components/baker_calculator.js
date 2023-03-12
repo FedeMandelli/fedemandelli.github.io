@@ -6,19 +6,21 @@ class IngredientsCalc extends HTMLElement {
 
     connectedCallback() {
         // Get the inputs
-        this.inputs = [this.totalFlourGr = this.querySelector('#total_flour_gr'),
-        this.strongFlourGr = this.querySelector('#strong_flour_gr'),
-        this.strongFlourPct = this.querySelector('#strong_flour_pct'),
-        this.normalFlourGr = this.querySelector('#normal_flour_gr'),
-        this.normalFlourPct = this.querySelector('#normal_flour_pct'),
-        this.starterPct = this.querySelector('#starter_pct'),
-        this.starterGr = this.querySelector('#starter_gr'),
-        this.waterPct = this.querySelector('#water_pct'),
-        this.waterGr = this.querySelector('#water_gr'),
-        this.saltPct = this.querySelector('#salt_pct'),
-        this.saltGr = this.querySelector('#salt_gr'),
-        this.oilPct = this.querySelector('#oil_pct'),
-        this.oilGr = this.querySelector('#oil_gr')]
+        this.inputs = [
+            this.totalFlourGr = this.querySelector('#total_flour_gr'),
+            this.strongFlourGr = this.querySelector('#strong_flour_gr'),
+            this.strongFlourPct = this.querySelector('#strong_flour_pct'),
+            this.normalFlourGr = this.querySelector('#normal_flour_gr'),
+            this.normalFlourPct = this.querySelector('#normal_flour_pct'),
+            this.starterPct = this.querySelector('#starter_pct'),
+            this.starterGr = this.querySelector('#starter_gr'),
+            this.waterPct = this.querySelector('#water_pct'),
+            this.waterGr = this.querySelector('#water_gr'),
+            this.saltPct = this.querySelector('#salt_pct'),
+            this.saltGr = this.querySelector('#salt_gr'),
+            this.oilPct = this.querySelector('#oil_pct'),
+            this.oilGr = this.querySelector('#oil_gr')
+        ]
 
         // Add event listeners
         this.inputs.forEach(input => {
@@ -118,6 +120,26 @@ class IngredientsCalc extends HTMLElement {
 
         // update the table
         this.update({ target: this.totalFlourGr })
+    }
+
+    updateLanguage(language) {
+        // define labels
+        const labelsName = {
+            '#ingredient_label': { 'lang_eng': 'Ingredient', 'lang_ita': 'Ingrediente' },
+            '#grams_label': { 'lang_eng': 'Grams', 'lang_ita': 'Grammi' },
+            '#total_flour_label': { 'lang_eng': 'Total Flour', 'lang_ita': 'Farina Totale' },
+            '#strong_flour_label': { 'lang_eng': 'Strong Flour', 'lang_ita': 'Farina Forte' },
+            '#normal_flour_label': { 'lang_eng': 'Normal Flour', 'lang_ita': 'Farina Normale' },
+            '#starter_label': { 'lang_eng': 'Starter', 'lang_ita': 'Lievito' },
+            '#water_label': { 'lang_eng': 'Water', 'lang_ita': 'Acqua' },
+            '#salt_label': { 'lang_eng': 'Salt', 'lang_ita': 'Sale' },
+            '#oil_label': { 'lang_eng': 'Oil', 'lang_ita': 'Olio' }
+        }
+
+        // update labels
+        Object.keys(labelsName).forEach(label => {
+            this.querySelector(label).innerHTML = labelsName[label][language]
+        })
     }
 }
 window.customElements.define('ingredients-calc', IngredientsCalc);
@@ -234,6 +256,57 @@ class JobsCalc extends HTMLElement {
         // clear checks
         this.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false)
     }
+
+    updateLanguage(language) {
+        // define labels
+        const labelsName = {
+            '#job_label': { 'lang_eng': 'Job', 'lang_ita': 'Lavoro' },
+            '#time_label': { 'lang_eng': 'Time', 'lang_ita': 'Ora' },
+            '#wait_label': { 'lang_eng': 'Wait (m)', 'lang_ita': 'Attesa (m)' },
+            '#progress_label': { 'lang_eng': 'Progress', 'lang_ita': 'Progresso' },
+            '#first_mix_label': { 'lang_eng': '1st Mix', 'lang_ita': '1° Impasto' },
+            '#second_mix_label': { 'lang_eng': '2nd Mix', 'lang_ita': '2° Impasto' },
+            '#first_fold_label': { 'lang_eng': '1st Fold', 'lang_ita': '1° Piega' },
+            '#second_fold_label': { 'lang_eng': '2nd Fold', 'lang_ita': '2° Piega' },
+            '#third_fold_label': { 'lang_eng': '3rd Fold', 'lang_ita': '3° Piega' },
+        }
+
+        // update labels
+        Object.keys(labelsName).forEach(label => {
+            this.querySelector(label).innerHTML = labelsName[label][language]
+        })
+    }
+}
+window.customElements.define('jobs-calc', JobsCalc);
+
+// === Language Toggle ===
+function toggleLanguage() {
+    // select elements
+    const languages = Array.from(document.querySelectorAll('.language > *'))
+    const ingredientsCalc = document.querySelector('ingredients-calc')
+    const jobsCalc = document.querySelector('jobs-calc')
+
+    // add event listeners
+    languages.forEach(language => {
+        language.addEventListener('click', () => {
+            // toggle language
+            languages.forEach(language => language.classList.remove('selected'))
+            language.classList.add('selected')
+
+            // update language
+            ingredientsCalc.updateLanguage(language.id)
+            jobsCalc.updateLanguage(language.id)
+
+            // update instructions
+            const instructions = {
+                'lang_eng': 'Click on the header to reset the table',
+                'lang_ita': 'Clicca sul titolo per resettare la tabella'
+            }
+            const instructionsText = document.querySelector('#instructions')
+                .innerHTML = instructions[language.id]
+        })
+    })
+
 }
 
-window.customElements.define('jobs-calc', JobsCalc);
+toggleLanguage()
