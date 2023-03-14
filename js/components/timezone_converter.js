@@ -23,54 +23,58 @@ class TimezoneConverter extends HTMLElement {
         this.firstTimezone = this.querySelector('#first-timezone')
         this.firstTime = this.querySelector('#first-time')
         this.firstDate = this.querySelector('#first-date')
+        this.firstClear = this.querySelector('#first-clear')
+        this.firstDefault = this.querySelector('#first-default')
         this.setDefault()
 
         // second timezone
         this.secondTimezone = this.querySelector('#second-timezone')
         this.secondTime = this.querySelector('#second-time')
         this.secondDate = this.querySelector('#second-date')
+        this.secondClear = this.querySelector('#second-clear')
 
         // event listeners
         this.firstTimezone.addEventListener('change', this.updateTime.bind(this))
         this.firstTime.addEventListener('change', this.updateTime.bind(this))
         this.firstDate.addEventListener('change', this.updateTime.bind(this))
+        this.firstClear.addEventListener('click', this.clearFirst.bind(this))
+        this.firstDefault.addEventListener('click', this.setDefault.bind(this))
         this.secondTimezone.addEventListener('change', this.updateTime.bind(this))
         this.secondTime.addEventListener('change', this.updateTime.bind(this))
         this.secondDate.addEventListener('change', this.updateTime.bind(this))
+        this.secondClear.addEventListener('click', this.clearSecond.bind(this))
     }
 
-    updateTime() {
+    updateTime(element) {
         // get values
-        let firstTimezone = this.firstTimezone.value
-        let firstTime = this.firstTime.value
-        let firstDate = this.firstDate.value
-        let secondTimezone = this.secondTimezone.value
-        let secondTime = this.secondTime.value
-        let secondDate = this.secondDate.value
+        var firstTimezone = this.firstTimezone.value
+        var firstTime = this.firstTime.value
+        var firstDate = this.firstDate.value
+        var secondTimezone = this.secondTimezone.value
+        var secondTime = this.secondTime.value
+        var secondDate = this.secondDate.value
 
-        // update second timezone
-        if (firstTimezone && firstTime && firstDate) {
-            let firstMoment = moment.tz(`${firstDate} ${firstTime}`, firstTimezone)
-            let secondMoment = firstMoment.clone().tz(secondTimezone)
-            this.secondTimezone.value = secondTimezone
-            this.secondTime.value = secondMoment.format('HH:mm')
-            this.secondDate.value = secondMoment.format('YYYY-MM-DD')
+        // update
+        if (['first-timezone', 'first-time', 'first-date', 'second-timezone'].includes(element.target.id)) {
+            this.secondTime.value = moment.tz(firstDate + ' ' + firstTime, firstTimezone).tz(secondTimezone).format('HH:mm')
+            this.secondDate.value = moment.tz(firstDate + ' ' + firstTime, firstTimezone).tz(secondTimezone).format('YYYY-MM-DD')
         }
-        // update first timezone
-        else if (secondTimezone && secondTime && secondDate) {
-            let secondMoment = moment.tz(`${secondDate} ${secondTime}`, secondTimezone)
-            let firstMoment = secondMoment.clone().tz(firstTimezone)
-            this.firstTimezone.value = firstTimezone
-            this.firstTime.value = firstMoment.format('HH:mm')
-            this.firstDate.value = firstMoment.format('YYYY-MM-DD')
-        }
-        // set default
         else {
-            this.setDefault()
+            this.firstTime.value = moment.tz(secondDate + ' ' + secondTime, secondTimezone).tz(firstTimezone).format('HH:mm')
+            this.firstDate.value = moment.tz(secondDate + ' ' + secondTime, secondTimezone).tz(firstTimezone).format('YYYY-MM-DD')
         }
+    }
 
+    clearFirst() {
+        this.firstTimezone.value = ''
+        this.firstTime.value = ''
+        this.firstDate.value = ''
+    }
 
-
+    clearSecond() {
+        this.secondTimezone.value = ''
+        this.secondTime.value = ''
+        this.secondDate.value = ''
     }
 
     setDefault() {

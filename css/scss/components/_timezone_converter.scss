@@ -1,23 +1,29 @@
 timezone-converter {
-    background-color: $primary-color;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    max-width: 60ch;
     gap: 0.5rem;
+    max-width: 80ch;
 
     .zone-container {
+        background-color: $primary-color;
         display: flex;
         flex-direction: column;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+    
+    input {
+        margin-block: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+        font-size: 1.2rem;
     }
 
-    input {
-        text-align: center;
-        padding: 0.5rem;
-        margin-block: 0.5rem;
-        font-size: 1.2rem;
-        max-width: 100%;
+    button{
+        max-width: fit-content;
+        margin: 1rem auto 0 auto;
     }
+
 }

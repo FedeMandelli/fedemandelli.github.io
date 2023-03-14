@@ -22,11 +22,16 @@
                 <input id="first-timezone" type="text" placeholder="First Timezone" list="timezone-suggestions">
                 <input id="first-time" type="time">
                 <input id="first-date" type="date">
+                <div class="buttons-container">
+                    <button id="first-clear" class="button-inverted">Clear</button>
+                    <button id="first-default" class="button-inverted">Current</button>
+                </div>
             </div>
             <div class="zone-container">
                 <input id="second-timezone" type="text" placeholder="Second Timezone" list="timezone-suggestions">
                 <input id="second-time" type="time">
                 <input id="second-date" type="date">
+                <button id="second-clear" class="button-inverted">Clear</button>
             </div>
             <datalist id="timezone-suggestions"></datalist>
         </timezone-converter>

@@ -21,6 +21,11 @@ button,
     cursor: pointer;
     transition: 300ms ease-in-out;
 
+    &-inverted {
+        background-color: $secondary-color;
+        color: $primary-color;
+    }
+
     &:hover {
         background-color: $accent-color;
         color: $primary-color;
