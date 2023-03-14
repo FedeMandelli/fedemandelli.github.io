@@ -12,6 +12,7 @@
             <li>
                 <p class="button" id="open_pomodoro">Pomodoro Timer</button>
                 <p class="button" id="open_baking">Baking Calculator</button>
+                <p class="button" id="open_timezone">Timezone Converter</button>
             </li>
         </ul>
     </div>
@@ -28,4 +29,8 @@
     // baking window
     document.getElementById('open_baking')
         .addEventListener('click', () => { openTools('baking', 500, 600) })
+
+    // timezone converter
+    document.getElementById('open_timezone')
+        .addEventListener('click', () => { openTools('timezone', 600, 400) })
 </script>

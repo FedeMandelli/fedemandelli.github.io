@@ -1,0 +1,23 @@
+timezone-converter {
+    background-color: $primary-color;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 60ch;
+    gap: 0.5rem;
+
+    .zone-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        text-align: center;
+        padding: 0.5rem;
+        margin-block: 0.5rem;
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+}

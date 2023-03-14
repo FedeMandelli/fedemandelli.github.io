@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fede Mandelli | Pomodoro</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="/media/imgs/logo.svg">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <script type="module" src="/js/components/timezone_converter.js" defer></script>
+    <script src="/js/modules/moment/moment.js"></script>
+    <script src="/js/modules/moment/moment-timezone-with-data.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Timezone</h1>
+        <h1 class="mb-1">Converter</h1>
+        <timezone-converter>
+            <div class="zone-container">
+                <input id="first-timezone" type="text" placeholder="First Timezone" list="timezone-suggestions">
+                <input id="first-time" type="time">
+                <input id="first-date" type="date">
+            </div>
+            <div class="zone-container">
+                <input id="second-timezone" type="text" placeholder="Second Timezone" list="timezone-suggestions">
+                <input id="second-time" type="time">
+                <input id="second-date" type="date">
+            </div>
+            <datalist id="timezone-suggestions"></datalist>
+        </timezone-converter>
+    </main>
+</body>
+
+</html>
