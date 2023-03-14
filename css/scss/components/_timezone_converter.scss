@@ -12,8 +12,12 @@ timezone-converter {
         flex-direction: column;
         padding: 1rem;
         border-radius: 0.5rem;
+
+        * {
+            flex: 1;
+        }
     }
-    
+
     input {
         margin-block: 0.5rem;
         padding: 0.5rem;
@@ -21,9 +25,8 @@ timezone-converter {
         font-size: 1.2rem;
     }
 
-    button{
+    button {
         max-width: fit-content;
         margin: 1rem auto 0 auto;
     }
-
 }
