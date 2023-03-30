@@ -10,11 +10,6 @@ class TimezoneConverter extends HTMLElement {
         moment.tz.names().forEach(function (timezone) {
             let option = document.createElement("option")
             option.text = timezone
-            try {
-                // option.value = timezone.split("/")[1].replace("_", " ")
-            }
-            catch (e) {
-            }
             option.value = timezone
             timezoneSuggestionsList.appendChild(option)
         })
