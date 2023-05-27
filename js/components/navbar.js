@@ -37,7 +37,7 @@ class NavBar extends HTMLElement {
 
     loadPage(page) {
         // reformat page name
-        var target = page || 'home' // === TO CHANGE IN PRODUCTION ===
+        var target = page || 'home' // === SET TO HOME IN PRODUCTION ===
         target = target.charAt(0) === '/' ? target.substring(1) : target
 
         // fade out current page

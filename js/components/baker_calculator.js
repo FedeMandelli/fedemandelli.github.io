@@ -6,6 +6,7 @@ class IngredientsCalc extends HTMLElement {
 
     connectedCallback() {
         // Get the inputs
+        this.totalWeightGr = this.querySelector('#total_weight_gr')
         this.inputs = [
             this.totalFlourGr = this.querySelector('#total_flour_gr'),
             this.strongFlourGr = this.querySelector('#strong_flour_gr'),
@@ -106,15 +107,18 @@ class IngredientsCalc extends HTMLElement {
         if (changed === 'oil_pct') {
             this.oilGr.value = (this.totalFlourGr.value * this.oilPct.value / 100).toFixed(1)
         }
+
+        // update total weight
+        this.totalWeightGr.value = (parseFloat(this.totalFlourGr.value) + parseFloat(this.starterGr.value) + parseFloat(this.waterGr.value)).toFixed(1)
     }
 
     resetTable() {
         // set initial values
-        this.totalFlourGr.value = 500
+        this.totalFlourGr.value = 600
         this.strongFlourPct.value = 80
         this.normalFlourPct.value = 20
-        this.starterPct.value = 25
-        this.waterPct.value = 70
+        this.starterPct.value = 33.3
+        this.waterPct.value = 75
         this.saltPct.value = 2
         this.oilPct.value = 4
 
@@ -133,7 +137,8 @@ class IngredientsCalc extends HTMLElement {
             '#starter_label': { 'lang_eng': 'Starter', 'lang_ita': 'Lievito' },
             '#water_label': { 'lang_eng': 'Water', 'lang_ita': 'Acqua' },
             '#salt_label': { 'lang_eng': 'Salt', 'lang_ita': 'Sale' },
-            '#oil_label': { 'lang_eng': 'Oil', 'lang_ita': 'Olio' }
+            '#oil_label': { 'lang_eng': 'Oil', 'lang_ita': 'Olio' },
+            '#total_weight_label': { 'lang_eng': 'Total Weight', 'lang_ita': 'Peso Totale' },
         }
 
         // update labels
