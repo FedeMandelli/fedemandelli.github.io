@@ -109,16 +109,16 @@ class IngredientsCalc extends HTMLElement {
         }
 
         // update total weight
-        this.totalWeightGr.value = (parseFloat(this.totalFlourGr.value) + parseFloat(this.starterGr.value) + parseFloat(this.waterGr.value)).toFixed(1)
+        this.totalWeightGr.value = (parseFloat(this.totalFlourGr.value) + parseFloat(this.starterGr.value) + parseFloat(this.waterGr.value) + parseFloat(this.saltGr.value) + parseFloat(this.oilGr.value)).toFixed(1)
     }
 
     resetTable() {
         // set initial values
         this.totalFlourGr.value = 600
-        this.strongFlourPct.value = 80
-        this.normalFlourPct.value = 20
+        this.strongFlourPct.value = 100
+        this.normalFlourPct.value = 0
         this.starterPct.value = 33.3
-        this.waterPct.value = 75
+        this.waterPct.value = 80
         this.saltPct.value = 2
         this.oilPct.value = 4
 
