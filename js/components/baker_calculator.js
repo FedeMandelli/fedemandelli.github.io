@@ -249,11 +249,11 @@ class JobsCalc extends HTMLElement {
 
     resetTable() {
         // set the initial values
-        this.thirdFoldTime.value = '18:30'
-        this.firstMixWait.value = 60
-        this.secondMixWait.value = 40
-        this.firstFoldWait.value = 40
-        this.secondFoldWait.value = 40
+        this.thirdFoldTime.value = '17:00'
+        this.firstMixWait.value = 90
+        this.secondMixWait.value = 45
+        this.firstFoldWait.value = 45
+        this.secondFoldWait.value = 45
 
         // update the table
         this.update({ target: this.thirdFoldTime })
