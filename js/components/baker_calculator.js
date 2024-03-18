@@ -118,7 +118,7 @@ class IngredientsCalc extends HTMLElement {
         this.strongFlourPct.value = 100
         this.normalFlourPct.value = 0
         this.starterPct.value = 33.3
-        this.waterPct.value = 80
+        this.waterPct.value = 60
         this.saltPct.value = 2
         this.oilPct.value = 4
 
