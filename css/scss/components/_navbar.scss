@@ -86,7 +86,7 @@ nav-bar {
             font-size: 1.2rem;
             font-weight: 900;
             text-decoration: none;
-            padding: 0.4rem .8rem;
+            padding: 0.4rem 0.8rem;
             transition-property: color, background-color;
             transition-duration: 300ms;
             transition-timing-function: ease-in-out;
@@ -129,7 +129,7 @@ nav-bar {
             z-index: 1;
 
             &.links-container-open {
-                max-height: calc(2rem * 2);
+                max-height: calc(2rem * 3);
             }
         }
     }

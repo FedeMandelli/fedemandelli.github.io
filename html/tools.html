@@ -1,0 +1,28 @@
+<div class="container container-small text-center">
+  <h1 class="text-center m-1 mt-2">Tools</h1>
+  <ul>
+    <li>
+      <p class="button" id="open_baking">Baking Calculator</p>
+      <!-- <p class="button" id="open_pomodoro">Pomodoro Timer</p> -->
+      <!-- <p class="button" id="open_timezone">Timezone Converter</p> -->
+    </li>
+  </ul>
+</div>
+
+<script type="module">
+  // imports
+  import { openTools } from "/js/general/open_tools.js";
+
+  // baking window
+  document.getElementById("open_baking").addEventListener("click", () => {
+    openTools("baking", 500, 600);
+  });
+
+  // pomodoro window
+  // document.getElementById('open_pomodoro')
+  //     .addEventListener('click', () => { openTools('pomodoro', 300, 400) })
+
+  // timezone converter
+  // document.getElementById('open_timezone')
+  //     .addEventListener('click', () => { openTools('timezone', 600, 400) })
+</script>
