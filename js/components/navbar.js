@@ -31,7 +31,7 @@ class NavBar extends HTMLElement {
     });
 
     // create pages
-    const pages = ["home", "contact", "tools"];
+    const pages = ["home", "contact"]; // === ADD PAGES HERE ===
     const linksContainer = this.querySelector(".links-container");
     pages.forEach((page) => {
       const link = document.createElement("a");
@@ -78,7 +78,7 @@ class NavBar extends HTMLElement {
           );
 
           // update url
-          window.history.pushState({}, "", target); // === TO CHANGE IN PRODUCTION ===
+          window.history.pushState({}, "", target); // === UNCOMMENT IN PRODUCTION ===
         })
         .then(() => {
           // fade in new page
