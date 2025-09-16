@@ -77,7 +77,7 @@ nav-bar {
         transition: 300ms ease-in-out;
 
         &.links-container-open {
-            height: calc(100vh - 4rem - 6rem);
+            height: max(calc(100vh - 6rem - 4rem), calc(500px));
         }
 
         a {
@@ -88,8 +88,8 @@ nav-bar {
             transition-duration: 300ms;
             transition-timing-function: ease-in-out;
             position: relative;
-            margin: .5rem;
-            padding: .5rem;
+            margin: 0.5rem;
+            padding: 0.5rem;
             text-transform: uppercase;
 
             &:hover {
