@@ -3,59 +3,39 @@ nav-bar {
     color: $secondary-color;
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 2rem;
-
-    .nav-logo {
-        fill: $accent-color;
-        height: 2rem;
-        cursor: pointer;
-        transition: 300ms ease-in-out;
-        padding: 0.2rem;
-        margin-left: 0.5rem;
-
-        &:hover {
-            fill: $secondary-color;
-            padding: 0.15rem;
-        }
-    }
+    height: 4rem;
 
     .menu-button {
+        margin: 1rem;
         cursor: pointer;
-        width: 2rem;
+        width: 2.2rem;
         height: 2rem;
         position: relative;
-        margin-right: 0.5rem;
+
+        span {
+            position: absolute;
+            width: 100%;
+            height: 0.2rem;
+            background-color: $secondary-color;
+            border-radius: 0.15rem;
+            transition: 300ms ease-in-out;
+            top: calc(50% - 0.1rem);
+
+            &:nth-child(1) {
+                transform: translateY(-0.55rem);
+            }
+
+            &:nth-child(2) {
+                transform: translateY(0.55rem);
+            }
+        }
 
         &:hover {
             span {
                 background-color: $accent-color;
             }
-        }
-
-        span {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 0.2rem;
-            background-color: $secondary-color;
-            border-radius: 0.1rem;
-            transition: 300ms ease-in-out;
-
-            &:nth-child(1) {
-                transform: translateY(-0.5rem);
-            }
-
-            &:nth-child(2) {
-                transform: translateY(0.5rem);
-            }
-        }
-
-        @media (min-width: 768px) {
-            display: none;
         }
 
         &.menu-button-open {
@@ -70,27 +50,46 @@ nav-bar {
 
                 &:nth-child(3) {
                     transform: translateX(25%);
+                    height: 0;
                     opacity: 0;
                 }
             }
+        }
+
+        @media (min-width: 768px) {
+            display: none;
         }
     }
 
     .links-container {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary-color;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        height: 0;
+        overflow: hidden;
+        z-index: 1;
+        transition: 300ms ease-in-out;
+
+        &.links-container-open {
+            height: calc(100vh - 4rem - 6rem);
+        }
 
         a {
-            display: block;
             cursor: pointer;
             color: $secondary-color;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-decoration: none;
-            padding: 0.4rem 0.8rem;
+            font-size: 2rem;
             transition-property: color, background-color;
             transition-duration: 300ms;
             transition-timing-function: ease-in-out;
             position: relative;
+            margin: .5rem;
+            padding: .5rem;
             text-transform: uppercase;
 
             &:hover {
@@ -98,8 +97,7 @@ nav-bar {
             }
 
             &.selected {
-                background-color: $secondary-color;
-                color: $primary-color;
+                color: $accent-color;
 
                 &::after {
                     position: absolute;
@@ -112,25 +110,15 @@ nav-bar {
                 }
 
                 &:hover {
-                    color: $primary-color;
+                    color: $accent-color;
                 }
             }
         }
 
-        @media (max-width: 768px) {
-            position: absolute;
-            top: 2rem;
-            right: 0;
-            flex-direction: column;
-            background-color: $primary-color;
-            max-height: 0;
-            overflow: hidden;
-            transition: 300ms ease-in-out;
-            z-index: 1;
-
-            &.links-container-open {
-                max-height: calc(2rem * 3);
-            }
+        @media (min-width: 768px) {
+            flex-direction: row;
+            height: auto;
+            position: static;
         }
     }
 }

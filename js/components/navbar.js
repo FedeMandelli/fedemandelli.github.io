@@ -9,12 +9,8 @@ class NavBar extends HTMLElement {
     this.menuButton = this.querySelector(".menu-button");
     this.linksContainer = this.querySelector(".links-container");
     this.mainSection = document.querySelector("main");
-    this.logo = this.querySelector("svg");
 
     // add event listeners
-    this.logo.addEventListener("click", () => {
-      this.loadPage("home");
-    });
     this.menuButton.addEventListener("click", () => {
       this.toggleMenu();
     });
