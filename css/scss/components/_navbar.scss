@@ -90,7 +90,7 @@ nav-bar {
             position: relative;
             margin: 0.5rem;
             padding: 0.5rem;
-            // text-transform: uppercase;
+            text-transform: capitalize;
 
             &:hover {
                 color: $accent-color;

@@ -27,7 +27,7 @@ class NavBar extends HTMLElement {
     });
 
     // create pages
-    const pages = ["Home", "Contact"]; // === ADD PAGES HERE ===
+    const pages = ["home", "contact"]; // === ADD PAGES HERE ===
     const linksContainer = this.querySelector(".links-container");
     pages.forEach((page) => {
       const link = document.createElement("a");
