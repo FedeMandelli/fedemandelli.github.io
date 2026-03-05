@@ -59,11 +59,7 @@ class SiteRouter {
     const target = this.routes.includes(route) ? route : null;
 
     if (!target) {
-      if (updateHistory) {
-        this.updateUrl(route, replaceState);
-      }
-      this.renderNotFound(route);
-      this.onRouteChange(null);
+      this.loadRoute(this.defaultRoute, { updateHistory: true, replaceState: true });
       return;
     }
 

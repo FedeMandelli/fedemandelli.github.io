@@ -1,5 +1,20 @@
 <script>
-    const fullRoute = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-    const encodedRoute = encodeURIComponent(fullRoute);
-    window.location.replace(`/?route=${encodedRoute}`);
+        const aliases = {
+            "/baking": "/projects/baking/",
+            "/pomodoro": "/projects/pomodoro/",
+            "/timezone": "/projects/timezone/"
+        };
+
+        const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
+        const aliasTarget = aliases[pathname];
+
+        if (aliasTarget) {
+            window.location.replace(aliasTarget);
+        } else if (/^\/(js|css|html|media)(\/|$)/.test(pathname)) {
+            window.location.replace("/");
+        } else {
+            const fullRoute = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+            const encodedRoute = encodeURIComponent(fullRoute);
+            window.location.replace(`/?route=${encodedRoute}`);
+        }
 </script>
