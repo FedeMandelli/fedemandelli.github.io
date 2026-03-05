@@ -1,0 +1,14 @@
+{
+  "name": "fedemandelli-personal-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal website static project with SCSS and Web Components",
+  "scripts": {
+    "build:css": "sass --no-source-map --style=compressed css/scss/style.scss css/style.min.css",
+    "watch:css": "sass --watch --no-source-map --style=compressed css/scss/style.scss css/style.min.css",
+    "check:css": "sass --no-source-map css/scss/style.scss css/style.min.css"
+  },
+  "devDependencies": {
+    "sass": "^1.93.0"
+  }
+}

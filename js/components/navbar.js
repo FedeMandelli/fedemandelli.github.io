@@ -2,98 +2,65 @@
 class NavBar extends HTMLElement {
   constructor() {
     super();
+    this.pages = ["home", "contact"]; // === ADD PAGES HERE ===
   }
 
   connectedCallback() {
-    // get elements
     this.menuButton = this.querySelector(".menu-button");
     this.linksContainer = this.querySelector(".links-container");
-    this.mainSection = document.querySelector("main");
 
-    // add event listeners
     this.menuButton.addEventListener("click", () => {
       this.toggleMenu();
     });
-    this.mainSection.addEventListener("click", () => {
-      this.closeMenu();
-    });
+
+    const mainSection = document.querySelector("main");
+    if (mainSection) {
+      mainSection.addEventListener("click", () => {
+        this.closeMenu();
+      });
+    }
+
     window.addEventListener("resize", () => {
       if (window.innerWidth > 768) {
         this.closeMenu();
       }
     });
-    window.addEventListener("popstate", () => {
-      this.loadPage();
-    });
 
-    // create pages
-    const pages = ["home", "contact"]; // === ADD PAGES HERE ===
-    const linksContainer = this.querySelector(".links-container");
-    pages.forEach((page) => {
+    this.linksContainer.innerHTML = "";
+    this.pages.forEach((page) => {
       const link = document.createElement("a");
       link.innerHTML = page;
-      link.addEventListener("click", () => {
-        this.loadPage(page);
+      link.href = page === "home" ? "/" : `/${page}`;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.requestNavigation(page);
       });
-      linksContainer.appendChild(link);
+      this.linksContainer.appendChild(link);
     });
-
-    // set first page
-    const params = new URLSearchParams(window.location.search);
-    const target = params.get("page");
-    this.loadPage(target);
   }
 
-  loadPage(page) {
-    // reformat page name
-    var target = page || "home";
-    target = target.charAt(0) === "/" ? target.substring(1) : target;
-
-    // fade out current page
-    this.mainSection.style.opacity = 0;
-
-    // fetch html
-    setTimeout(() => {
-      fetch(`/html/${target}.html`)
-        .then((response) => {
-          // page found
-          if (response.status === 200) {
-            return response.text();
-          }
-
-          // page not found
-          else if (response.status === 404) {
-            return "Page not found";
-          }
-        })
-        .then((html) => {
-          // set page content
-          this.mainSection.innerHTML = "";
-          this.mainSection.appendChild(
-            document.createRange().createContextualFragment(html)
-          );
-
-          // update url
-          window.history.pushState({}, "", target); // === UNCOMMENT IN PRODUCTION ===
-        })
-        .then(() => {
-          // fade in new page
-          this.mainSection.style.opacity = 1;
-        });
-    }, 400);
-
-    // set active link
+  setActiveRoute(route) {
     const links = this.querySelectorAll("a");
     links.forEach((link) => {
-      if (link.innerHTML === target) {
+      if (link.innerHTML === route) {
         link.classList.add("selected");
       } else {
         link.classList.remove("selected");
       }
     });
+  }
 
-    // close menu
+  requestNavigation(route) {
     this.closeMenu();
+    document.dispatchEvent(
+      new CustomEvent("site:navigate", {
+        detail: { route },
+      })
+    );
+  }
+
+  getPages() {
+    return [...this.pages];
   }
 
   toggleMenu() {
