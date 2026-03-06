@@ -1,3 +1,5 @@
+@use "colors" as *;
+
 // default button
 .buttons-container {
     display: flex;
@@ -29,28 +31,5 @@ button,
     &:hover {
         background-color: $accent-color;
         color: $primary-color;
-    }
-}
-
-// language selector
-.language {
-    display: table;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    border: 1px solid $primary-color;
-
-    p {
-        display: table-cell;
-        background-color: $secondary-color;
-        color: $primary-color;
-        text-align: center;
-        padding: 0.5rem;
-        cursor: pointer;
-        transition: 300ms ease-in-out;
-    }
-
-    .selected {
-        background-color: $primary-color;
-        color: $secondary-color;
     }
 }

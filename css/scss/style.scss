@@ -1,19 +1,19 @@
 // primary imports
-@import "colors";
-@import "generators";
-@import "standard_elements";
-@import "custom_functions";
+@use "colors";
+@use "generators";
+@use "standard_elements";
+@use "custom_functions";
 
 // elements
-@import "buttons";
+@use "buttons";
 
 // main structure
-@import "basic_layout";
-@import "components/navbar";
-@import "footer";
+@use "basic_layout";
+@use "components/navbar";
+@use "footer";
 
 // components
-@import "components/contact_form";
-@import "components/baker_calculator";
-@import "components/pomodoro_timer";
-@import "components/timezone_converter";
+@use "components/contact_form";
+@use "components/baker_calculator";
+@use "components/pomodoro_timer";
+@use "components/timezone_converter";

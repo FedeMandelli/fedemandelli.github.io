@@ -7,123 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Federico Mandelli | Baking</title>
     <link rel="shortcut icon" type="image/svg+xml" href="/media/imgs/logo.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL@1">
     <link rel="stylesheet" href="/css/style.min.css">
     <script type="module" src="/projects/baking/js/baker_calculator.js" defer></script>
 </head>
 
-<body>
+<body class="baking-page">
     <main>
-        <h1 class="text-center">Baking Calculator</h1>
-        <div class="text-center fs-08 m-1" id="instructions">Click on the header to reset the table</div>
-        <ingredients-calc>
-            <table class="baker-table">
-                <thead id="reset">
-                    <tr>
-                        <th id="ingredient_label">Ingredient</th>
-                        <th>%</th>
-                        <th id="grams_label">Grams</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="total_flour_label">Total Flour</td>
-                        <td><input type="number" value="100" disabled></td>
-                        <td><input id="total_flour_gr" type="number"></td>
-                    </tr>
-
-                    <tr>
-                        <td id="strong_flour_label">Strong Flour</td>
-                        <td><input id="strong_flour_pct" type="number"></td>
-                        <td><input id="strong_flour_gr" type="number"></td>
-                    </tr>
-
-                    <tr>
-                        <td id="normal_flour_label">Normal Flour</td>
-                        <td><input id="normal_flour_pct" type="number"></td>
-                        <td><input id="normal_flour_gr" type="number"></td>
-                    </tr>
-
-                    <tr>
-                        <td id="starter_label">Starter</td>
-                        <td><input id="starter_pct" type="number"></td>
-                        <td><input id="starter_gr" type="number"></td>
-                    </tr>
-
-                    <tr>
-                        <td id="water_label">Water</td>
-                        <td><input id="water_pct" type="number"></td>
-                        <td><input id="water_gr" type="number" disabled></td>
-                    </tr>
-
-                    <tr>
-                        <td id="salt_label">Salt</td>
-                        <td><input id="salt_pct" type="number"></td>
-                        <td><input id="salt_gr" type="number" disabled></td>
-                    </tr>
-
-                    <tr>
-                        <td id="oil_label">Oil</td>
-                        <td><input id="oil_pct" type="number"></td>
-                        <td><input id="oil_gr" type="number" disabled></td>
-                    </tr>
-
-                    <tr>
-                        <td id="total_weight_label">Total Weight</td>
-                        <td></td>
-                        <td><input id="total_weight_gr" type="number" disabled></td>
-                    </tr>
-            </table>
-        </ingredients-calc>
-
-        <jobs-calc class="mt-1">
-            <table class="baker-table jobs-table">
-                <thead id="reset">
-                    <tr>
-                        <th id="job_label">Job</th>
-                        <th id="time_label">Time</th>
-                        <th id="wait_label">Wait (m)</th>
-                        <th id="progress_label">Progress</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="first_mix_label">1st Mix</td>
-                        <td><input id="first_mix_time" type="time"></td>
-                        <td><input id="first_mix_wait" type="number"></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td id="second_mix_label">2nd Mix</td>
-                        <td><input id="second_mix_time" type="time" disabled></td>
-                        <td><input id="second_mix_wait" type="number"></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td id="first_fold_label">1st Fold</td>
-                        <td><input id="first_fold_time" type="time" disabled></td>
-                        <td><input id="first_fold_wait" type="number"></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td id="second_fold_label">2nd Fold</td>
-                        <td><input id="second_fold_time" type="time" disabled></td>
-                        <td><input id="second_fold_wait" type="number"></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td id="third_fold_label">3rd Fold</td>
-                        <td><input id="third_fold_time" type="time"></td>
-                        <td></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </jobs-calc>
-
-        <div class="language mt-1">
-            <p id="lang_eng" class="selected">English</p>
-            <p id="lang_ita">Italiano</p>
-        </div>
+        <baking-calculator></baking-calculator>
     </main>
 </body>
 
